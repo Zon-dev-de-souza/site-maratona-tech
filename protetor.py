@@ -87,4 +87,4 @@ def gerar_prompt_minimizado(texto: str) -> str:
         protegido
     )
 
-    return protegido.strip()import
+    return protegido.strip()

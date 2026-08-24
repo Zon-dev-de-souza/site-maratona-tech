@@ -1,5 +1,5 @@
 # Site-maratona-tech: 
-Analisador de privacidade para estudantes usando Python com Regex + ferramentas educativas para estudantes.
+Analisador de privacidade para estudantes usando Python com Regex + conteudos educativos para estudantes.
 
 # Materias:
 - Programação + ebooks gratuitos

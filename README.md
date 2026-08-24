@@ -1,4 +1,4 @@
-# site-maratona-tech: 
+# Site-maratona-tech: 
 Analisador de privacidade para estudantes usando Python com Regex + ferramentas educativas para estudantes.
 
 # Materias:

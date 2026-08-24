@@ -83,8 +83,7 @@ RECURSOS = {
                 "básica e conteúdos importantes para vestibulares."
             ),
             "url": (
-                "https://www.youtube.com/results?"
-                "search_query=matem%C3%A1tica+b%C3%A1sica+vestibular"
+                "https://www.youtube.com/watch?v=e78_5WIssSU&list=PLTPg64KdGgYhYpS5nXdFgdqEZDOS5lARB"
             )
         },
 

@@ -118,4 +118,4 @@ if st.button("Analisar texto", type="primary"):
                     "Não foi possível realizar a análise com a IA."
                 )
 
-                st.ccaptionf"Erro: {erro}")import
+                st.caption(f"Erro: {erro}")

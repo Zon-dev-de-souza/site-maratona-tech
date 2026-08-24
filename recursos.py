@@ -53,7 +53,7 @@ RECURSOS = {
     ],
 
 
-    "🇺🇸 Inglês": [
+    "🗽 Inglês": [
 
         {
             "titulo": "BBC Learning English",

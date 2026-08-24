@@ -2,10 +2,8 @@ import streamlit as st
 
 from recursos import RECURSOS
 from system import analisar_privacidade
-from protetor import (
-proteger_prompt, 
-gerar_prompt_minimizado
-)
+from protetor import (proteger_prompt, gerar_prompt_minimizado)
+
 
 st.set_page_config(
     page_title="Projeto maratona tec",

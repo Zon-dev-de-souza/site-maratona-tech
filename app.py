@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 
-st.title("🛡️ Proteja seu Prompt")
+st.title("Proteja seu Prompt")
 
 st.write(
     "Analise as informações que você pretende compartilhar "

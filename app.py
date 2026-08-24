@@ -6,7 +6,7 @@ from protetor import proteger_prompt, gerar_prompt_minimizado
 
 
 st.set_page_config(
-    page_title="Educa+",
+    page_title="Projeto maratona tec",
     page_icon="📚",
     layout="wide"
 )
@@ -14,7 +14,7 @@ st.set_page_config(
 
 # ---------- CABEÇALHO ----------
 
-st.title("📚 Educa+")
+st.title("Projeto maratona tec")
 
 st.write(
     "Recursos educacionais gratuitos e ferramentas para ajudar "
@@ -37,7 +37,7 @@ pagina = st.sidebar.radio(
 
 # ---------- INÍCIO ----------
 
-if pagina == "🏠 Início":
+if pagina == "Início":
 
     st.header("Aprenda mais. Encontre recursos. Use tecnologia com segurança.")
 
@@ -108,9 +108,9 @@ elif pagina == "📚 Recursos educacionais":
 
 # ---------- PROTETOR DE PROMPT ----------
 
-elif pagina == "🛡️ Protetor de Prompt":
+elif pagina == "Protetor de Prompt":
 
-    st.header("🛡️ Protetor de Prompt")
+    st.header("Protetor de Prompt")
 
     st.write(
         "Antes de enviar um texto para uma IA, verifique se ele "
@@ -168,7 +168,7 @@ elif pagina == "🛡️ Protetor de Prompt":
                 language="text"
             )
 
-            st.subheader("🧠 Análise do prompt")
+            st.subheader("Análise do prompt")
 
             if riscos:
 
@@ -215,9 +215,9 @@ elif pagina == "🛡️ Protetor de Prompt":
 
 # ---------- SOBRE ----------
 
-elif pagina == "👥 Sobre o projeto":
+elif pagina == "Sobre o projeto":
 
-    st.header("👥 Sobre o projeto")
+    st.header("Sobre o projeto")
 
     st.subheader("Educa+")
 
@@ -234,7 +234,7 @@ elif pagina == "👥 Sobre o projeto":
 
     st.divider()
 
-    st.subheader("🎯 Objetivo")
+    st.subheader("Objetivo")
 
     st.write(
         "Reunir materiais gratuitos para diferentes áreas de estudo "
@@ -242,7 +242,7 @@ elif pagina == "👥 Sobre o projeto":
         "complementares."
     )
 
-    st.subheader("🛡️ Uso consciente de IA")
+    st.subheader("Uso consciente de IA")
 
     st.write(
         "O projeto também possui uma ferramenta de proteção de prompts. "
@@ -252,7 +252,7 @@ elif pagina == "👥 Sobre o projeto":
 
     st.divider()
 
-    st.subheader("👥 Equipe")
+    st.subheader("Equipe")
 
     st.write(
         "Projeto desenvolvido pelo grupo:"

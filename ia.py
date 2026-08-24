@@ -53,7 +53,10 @@ Texto para analisar:
         timeout=60
     )
 
-    resposta.raise_for_status()
+    if resposta.status_code != 200:
+        raise Exception(
+            f"Erro da API ({resposta.status_code}): {resposta.text}"
+        )
 
     dados = resposta.json()
 

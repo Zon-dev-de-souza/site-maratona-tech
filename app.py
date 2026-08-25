@@ -2,30 +2,28 @@ import streamlit as st
 
 from recursos import RECURSOS
 from system import analisar_privacidade
-from protetor import (proteger_prompt, gerar_prompt_minimizado)
+from protetor import proteger_prompt, gerar_prompt_minimizado
 
 
 st.set_page_config(
-    page_title="Projeto maratona tec",
+    page_title="Projeto Maratona Tech",
     page_icon="📚",
     layout="wide"
 )
 
 
-# ---------- CABEÇALHO ----------
+# ============================================================
+# MENU LATERAL
+# ============================================================
 
-st.title("Projeto maratona tec")
+st.sidebar.title("Projeto Maratona Tech")
 
-st.write(
-    "Recursos educacionais gratuitos e ferramentas para ajudar "
-    "estudantes a estudar e usar a tecnologia com mais segurança."
-)
+st.sidebar.caption("Maratona Tech 2026")
 
-
-# ---------- MENU ----------
+st.sidebar.divider()
 
 pagina = st.sidebar.radio(
-    "Navegação",
+    "Menu",
     [
         "🏠 Início",
         "📚 Recursos educacionais",
@@ -34,17 +32,32 @@ pagina = st.sidebar.radio(
     ]
 )
 
+# Espaçamento visual
+st.sidebar.write("")
+st.sidebar.write("")
+st.sidebar.divider()
 
-# ---------- INÍCIO ----------
+st.sidebar.caption(
+    "Projeto desenvolvido para a\n"
+    "Maratona Tech 2026"
+)
 
-if pagina == "Início":
 
-    st.header("Aprenda mais. Encontre recursos. Use tecnologia com segurança.")
+# ============================================================
+# INÍCIO
+# ============================================================
+
+if pagina == "🏠 Início":
+
+    st.title("Projeto Maratona Tech")
+
+    st.subheader(
+        "Recursos educacionais gratuitos para estudantes"
+    )
 
     st.write(
-        "O Educa+ reúne materiais educacionais gratuitos em um único lugar "
-        "e oferece uma ferramenta para ajudar estudantes a identificar "
-        "informações pessoais antes de compartilhá-las com uma IA."
+        "Encontre materiais gratuitos para complementar seus estudos "
+        "e aprenda a utilizar a tecnologia de forma mais consciente."
     )
 
     st.divider()
@@ -52,37 +65,55 @@ if pagina == "Início":
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("📚 Recursos gratuitos")
+
+        st.subheader("📚 Recursos educacionais")
 
         st.write(
-            "Encontre cursos, vídeos, e-books e outros materiais "
-            "para complementar seus estudos."
+            "Encontre cursos, vídeos, e-books e materiais gratuitos "
+            "para diferentes áreas de estudo."
         )
+
+        if st.button("Ver recursos", use_container_width=True):
+
+            st.session_state["pagina"] = "📚 Recursos educacionais"
+            st.rerun()
 
     with col2:
-        st.subheader("🛡️ Proteção de prompts")
+
+        st.subheader("🛡️ Protetor de Prompt")
 
         st.write(
-            "Verifique se seu prompt contém informações pessoais "
-            "desnecessárias antes de enviá-lo para uma inteligência artificial."
+            "Verifique informações pessoais antes de compartilhar "
+            "um texto com uma inteligência artificial."
         )
+
+        if st.button(
+            "Proteger meu prompt",
+            use_container_width=True
+        ):
+
+            st.session_state["pagina"] = "🛡️ Protetor de Prompt"
+            st.rerun()
 
     st.divider()
 
     st.info(
-        "Projeto desenvolvido por estudantes para a Maratona Tech 2026."
+        "🏆 Projeto desenvolvido por estudantes "
+        "para a Maratona Tech 2026."
     )
 
 
-# ---------- RECURSOS ----------
+# ============================================================
+# RECURSOS EDUCACIONAIS
+# ============================================================
 
 elif pagina == "📚 Recursos educacionais":
 
-    st.header("📚 Recursos educacionais gratuitos")
+    st.title("📚 Recursos educacionais")
 
     st.write(
-        "Selecione uma área para encontrar materiais gratuitos "
-        "que podem ajudar nos seus estudos."
+        "Materiais gratuitos selecionados para ajudar "
+        "nos seus estudos."
     )
 
     categoria = st.selectbox(
@@ -92,7 +123,9 @@ elif pagina == "📚 Recursos educacionais":
 
     st.divider()
 
-    for recurso in RECURSOS[categoria]:
+    recursos = RECURSOS[categoria]
+
+    for recurso in recursos:
 
         st.subheader(recurso["titulo"])
 
@@ -100,38 +133,47 @@ elif pagina == "📚 Recursos educacionais":
 
         st.link_button(
             "🔗 Acessar recurso",
-            recurso["url"]
+            recurso["url"],
+            use_container_width=False
         )
 
         st.divider()
 
 
-# ---------- PROTETOR DE PROMPT ----------
+# ============================================================
+# PROTETOR DE PROMPT
+# ============================================================
 
 elif pagina == "Protetor de Prompt":
 
-    st.header("Protetor de Prompt")
+    st.title("Protetor de Prompt")
 
     st.write(
-        "Antes de enviar um texto para uma IA, verifique se ele "
+        "Antes de enviar um texto para uma IA, descubra se ele "
         "contém informações pessoais desnecessárias."
     )
 
+    st.divider()
+
     texto = st.text_area(
-        "Cole aqui o prompt que você pretende enviar:",
+        "Cole aqui o prompt:",
         height=220,
         placeholder=(
-            "Exemplo: Tenho 16 anos, estudo na escola X "
+            "Exemplo: Tenho 16 anos, meu nome é João "
             "e preciso de ajuda com matemática."
         )
     )
 
-    if st.button("🔍 Analisar prompt", type="primary"):
+    if st.button(
+        "🔍 Analisar prompt",
+        type="primary",
+        use_container_width=True
+    ):
 
         if not texto.strip():
 
             st.warning(
-                "Digite ou cole algum texto antes de analisar."
+                "Digite ou cole algum texto primeiro."
             )
 
         else:
@@ -141,7 +183,11 @@ elif pagina == "Protetor de Prompt":
             alertas = resultado["alertas"]
             riscos = resultado["riscos"]
 
-            st.subheader("🔎 Verificação")
+            # --------------------------------------------
+            # VERIFICAÇÃO
+            # --------------------------------------------
+
+            st.subheader("🔎 Análise inicial")
 
             if alertas:
 
@@ -151,13 +197,21 @@ elif pagina == "Protetor de Prompt":
                 )
 
                 for alerta in alertas:
-                    st.write(f"⚠️ {alerta}")
+
+                    st.write(
+                        f"⚠️ {alerta}"
+                    )
 
             else:
 
                 st.success(
-                    "Nenhuma informação pessoal conhecida foi encontrada."
+                    "Nenhuma informação pessoal conhecida "
+                    "foi encontrada."
                 )
+
+            # --------------------------------------------
+            # TEXTO PROTEGIDO
+            # --------------------------------------------
 
             st.subheader("🛡️ Texto protegido")
 
@@ -168,34 +222,48 @@ elif pagina == "Protetor de Prompt":
                 language="text"
             )
 
-            st.subheader("Análise do prompt")
+            # --------------------------------------------
+            # ANÁLISE DE RISCO
+            # --------------------------------------------
+
+            st.subheader("📊 Análise de risco")
 
             if riscos:
 
                 for risco in riscos:
 
-                    if risco["nivel"] == "alto":
+                    nivel = risco["nivel"]
+
+                    if nivel == "alto":
                         icone = "🔴"
 
-                    elif risco["nivel"] == "medio":
+                    elif nivel == "medio":
                         icone = "🟠"
 
                     else:
                         icone = "🟡"
 
                     st.markdown(
-                        f"**{icone} {risco['informacao']} — "
-                        f"{risco['nivel'].upper()}**"
+                        f"### {icone} {risco['informacao']}"
                     )
 
-                    st.write(risco["motivo"])
+                    st.write(
+                        f"**Nível:** {nivel.upper()}"
+                    )
+
+                    st.write(
+                        risco["motivo"]
+                    )
 
             else:
 
                 st.success(
-                    "O prompt não apresenta riscos relevantes "
-                    "identificados pelas regras do sistema."
+                    "Nenhum risco relevante foi identificado."
                 )
+
+            # --------------------------------------------
+            # PROMPT FINAL
+            # --------------------------------------------
 
             st.subheader("✨ Prompt minimizado")
 
@@ -206,18 +274,386 @@ elif pagina == "Protetor de Prompt":
                 language="text"
             )
 
-            st.info(
-                "O sistema prioriza a minimização de dados: "
-                "informações que não ajudam a responder ao objetivo "
-                "do prompt podem ser removidas."
+            st.caption(
+                "O objetivo é manter apenas as informações "
+                "necessárias para realizar a tarefa."
             )
 
 
-# ---------- SOBRE ----------
+# ============================================================
+# SOBRE O PROJETO
+# ============================================================
 
 elif pagina == "Sobre o projeto":
 
-    st.header("Sobre o projeto")
+    st.title("Sobre o projeto")
+
+    st.subheader("Projeto Maratona Tech")
+
+    st.write(
+        "Somos um projeto desenvolvido por estudantes "
+        "para a Maratona Tech 2026."
+    )
+
+    st.write(
+        "O projeto busca facilitar o acesso a recursos "
+        "educacionais gratuitos e incentivar o uso consciente "
+        "da tecnologia na educação."
+    )
+
+    st.divider()
+
+    st.subheader("Nosso objetivo")
+
+    st.write(
+        "Reunir materiais educacionais gratuitos em um único "
+        "lugar, facilitando o acesso dos estudantes a conteúdos "
+        "que podem complementar seus estudos."
+    )
+
+    st.divider()
+
+    st.subheader("🛡️ Por que o Protetor de Prompt?")
+
+    st.write(
+        "Estudantes utilizam cada vez mais ferramentas de "
+        "inteligência artificial para estudar. Porém, podem "
+        "acabar compartilhando informações pessoais "
+        "desnecessárias."
+    )
+
+    st.write(
+        "Por isso, criamos uma ferramenta que identifica "
+        "possíveis dados pessoais e apresenta uma versão "
+        "mais segura do prompt."
+    )
+
+    st.divider()
+
+    st.subheader("👥 Equipe")
+
+    st.write(
+        "Projeto desenvolvido pelo grupo:"
+    )
+
+    st.write(
+        "• Nome do integrante 1\n\n"
+        "• Nome do integrante 2\n\n"
+        "• Nome do integrante 3\n\n"
+        "• Nome do integrante 4"
+    )
+
+    st.divider()
+
+    st.subheader("💻 Tecnologias utilizadas")
+
+    st.write(
+        "• Python\n\n"
+        "• Streamlit\n\n"
+        "• Expressões Regulares (Regex)\n\n"
+        "• GitHub"
+    )
+
+    st.divider()
+
+    st.subheader("🏆 Maratona Tech 2026")
+
+    st.write(
+        "Este projeto foi desenvolvido como parte da "
+        "participação do grupo na Maratona Tech 2026."
+    )
+
+    st.success(
+        "Educação + Tecnologia + Uso consciente de IA"
+    ) import streamlit as st
+
+from recursos import RECURSOS
+from system import analisar_privacidade
+from protetor import proteger_prompt, gerar_prompt_minimizado
+
+
+st.set_page_config(
+    page_title="Projeto Maratona Tech",
+    page_icon="📚",
+    layout="wide"
+)
+
+
+# ============================================================
+# MENU LATERAL
+# ============================================================
+
+st.sidebar.title("Projeto Maratona Tech")
+
+st.sidebar.caption("Maratona Tech 2026")
+
+st.sidebar.divider()
+
+pagina = st.sidebar.radio(
+    "Menu",
+    [
+        "🏠 Início",
+        "📚 Recursos educacionais",
+        "🛡️ Protetor de Prompt",
+        "👥 Sobre o projeto"
+    ]
+)
+
+# Espaçamento visual
+st.sidebar.write("")
+st.sidebar.write("")
+st.sidebar.divider()
+
+st.sidebar.caption(
+    "Projeto desenvolvido para a\n"
+    "Maratona Tech 2026"
+)
+
+
+# ============================================================
+# INÍCIO
+# ============================================================
+
+if pagina == "🏠 Início":
+
+    st.title("Projeto Maratona Tech")
+
+    st.subheader(
+        "Recursos educacionais gratuitos para estudantes"
+    )
+
+    st.write(
+        "Encontre materiais gratuitos para complementar seus estudos "
+        "e aprenda a utilizar a tecnologia de forma mais consciente."
+    )
+
+    st.divider()
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.subheader("📚 Recursos educacionais")
+
+        st.write(
+            "Encontre cursos, vídeos, e-books e materiais gratuitos "
+            "para diferentes áreas de estudo."
+        )
+
+        if st.button("Ver recursos", use_container_width=True):
+
+            st.session_state["pagina"] = "📚 Recursos educacionais"
+            st.rerun()
+
+    with col2:
+
+        st.subheader("🛡️ Protetor de Prompt")
+
+        st.write(
+            "Verifique informações pessoais antes de compartilhar "
+            "um texto com uma inteligência artificial."
+        )
+
+        if st.button(
+            "Proteger meu prompt",
+            use_container_width=True
+        ):
+
+            st.session_state["pagina"] = "🛡️ Protetor de Prompt"
+            st.rerun()
+
+    st.divider()
+
+    st.info(
+        "🏆 Projeto desenvolvido por estudantes "
+        "para a Maratona Tech 2026."
+    )
+
+
+# ============================================================
+# RECURSOS EDUCACIONAIS
+# ============================================================
+
+elif pagina == "📚 Recursos educacionais":
+
+    st.title("📚 Recursos educacionais")
+
+    st.write(
+        "Materiais gratuitos selecionados para ajudar "
+        "nos seus estudos."
+    )
+
+    categoria = st.selectbox(
+        "Escolha uma categoria:",
+        list(RECURSOS.keys())
+    )
+
+    st.divider()
+
+    recursos = RECURSOS[categoria]
+
+    for recurso in recursos:
+
+        st.subheader(recurso["titulo"])
+
+        st.write(recurso["descricao"])
+
+        st.link_button(
+            "🔗 Acessar recurso",
+            recurso["url"],
+            use_container_width=False
+        )
+
+        st.divider()
+
+
+# ============================================================
+# PROTETOR DE PROMPT
+# ============================================================
+
+elif pagina == "🛡️ Protetor de Prompt":
+
+    st.title("🛡️ Protetor de Prompt")
+
+    st.write(
+        "Antes de enviar um texto para uma IA, descubra se ele "
+        "contém informações pessoais desnecessárias."
+    )
+
+    st.divider()
+
+    texto = st.text_area(
+        "Cole aqui o prompt:",
+        height=220,
+        placeholder=(
+            "Exemplo: Tenho 16 anos, meu nome é João "
+            "e preciso de ajuda com matemática."
+        )
+    )
+
+    if st.button(
+        "🔍 Analisar prompt",
+        type="primary",
+        use_container_width=True
+    ):
+
+        if not texto.strip():
+
+            st.warning(
+                "Digite ou cole algum texto primeiro."
+            )
+
+        else:
+
+            resultado = analisar_privacidade(texto)
+
+            alertas = resultado["alertas"]
+            riscos = resultado["riscos"]
+
+            # --------------------------------------------
+            # VERIFICAÇÃO
+            # --------------------------------------------
+
+            st.subheader("🔎 Análise inicial")
+
+            if alertas:
+
+                st.warning(
+                    f"Foram encontradas {len(alertas)} "
+                    "possíveis informações pessoais."
+                )
+
+                for alerta in alertas:
+
+                    st.write(
+                        f"⚠️ {alerta}"
+                    )
+
+            else:
+
+                st.success(
+                    "Nenhuma informação pessoal conhecida "
+                    "foi encontrada."
+                )
+
+            # --------------------------------------------
+            # TEXTO PROTEGIDO
+            # --------------------------------------------
+
+            st.subheader("🛡️ Texto protegido")
+
+            texto_protegido = proteger_prompt(texto)
+
+            st.code(
+                texto_protegido,
+                language="text"
+            )
+
+            # --------------------------------------------
+            # ANÁLISE DE RISCO
+            # --------------------------------------------
+
+            st.subheader("📊 Análise de risco")
+
+            if riscos:
+
+                for risco in riscos:
+
+                    nivel = risco["nivel"]
+
+                    if nivel == "alto":
+                        icone = "🔴"
+
+                    elif nivel == "medio":
+                        icone = "🟠"
+
+                    else:
+                        icone = "🟡"
+
+                    st.markdown(
+                        f"### {icone} {risco['informacao']}"
+                    )
+
+                    st.write(
+                        f"**Nível:** {nivel.upper()}"
+                    )
+
+                    st.write(
+                        risco["motivo"]
+                    )
+
+            else:
+
+                st.success(
+                    "Nenhum risco relevante foi identificado."
+                )
+
+            # --------------------------------------------
+            # PROMPT FINAL
+            # --------------------------------------------
+
+            st.subheader("✨ Prompt minimizado")
+
+            prompt_seguro = gerar_prompt_minimizado(texto)
+
+            st.code(
+                prompt_seguro,
+                language="text"
+            )
+
+            st.caption(
+                "O objetivo é manter apenas as informações "
+                "necessárias para realizar a tarefa."
+            )
+
+
+# ============================================================
+# SOBRE O PROJETO
+# ============================================================
+
+elif pagina == "👥 Sobre o projeto":
+
+    st.title("👥 Sobre o projeto")
 
     st.subheader("Educa+")
 
@@ -227,57 +663,73 @@ elif pagina == "Sobre o projeto":
     )
 
     st.write(
-        "O objetivo é facilitar o acesso a recursos educacionais "
-        "gratuitos e incentivar o uso consciente da tecnologia "
-        "no ambiente educacional."
+        "O projeto busca facilitar o acesso a recursos "
+        "educacionais gratuitos e incentivar o uso consciente "
+        "da tecnologia na educação."
     )
 
     st.divider()
 
-    st.subheader("Objetivo")
+    st.subheader("🎯 Nosso objetivo")
 
     st.write(
-        "Reunir materiais gratuitos para diferentes áreas de estudo "
-        "em um único lugar, facilitando a busca por conteúdos "
-        "complementares."
-    )
-
-    st.subheader("Uso consciente de IA")
-
-    st.write(
-        "O projeto também possui uma ferramenta de proteção de prompts. "
-        "Ela utiliza regras e expressões regulares para identificar "
-        "informações pessoais que podem ser desnecessárias em um prompt."
+        "Reunir materiais educacionais gratuitos em um único "
+        "lugar, facilitando o acesso dos estudantes a conteúdos "
+        "que podem complementar seus estudos."
     )
 
     st.divider()
 
-    st.subheader("Equipe")
+    st.subheader("Por que o Protetor de Prompt?")
+
+    st.write(
+        "Estudantes utilizam cada vez mais ferramentas de "
+        "inteligência artificial para estudar. Porém, podem "
+        "acabar compartilhando informações pessoais "
+        "desnecessárias."
+    )
+
+    st.write(
+        "Por isso, criamos uma ferramenta que identifica "
+        "possíveis dados pessoais e apresenta uma versão "
+        "mais segura do prompt."
+    )
+
+    st.divider()
+
+    st.subheader("👥 Equipe")
 
     st.write(
         "Projeto desenvolvido pelo grupo:"
     )
 
     st.write(
-        "- Nome do integrante 1\n"
-        "- Nome do integrante 2\n"
-        "- Nome do integrante 3\n"
-        "- Nome do integrante 4"
+        "• Nome do integrante 1\n\n"
+        "• Nome do integrante 2\n\n"
+        "• Nome do integrante 3\n\n"
+        "• Nome do integrante 4"
     )
 
     st.divider()
 
-    st.subheader("💻 Tecnologias")
+    st.subheader("💻 Tecnologias utilizadas")
 
     st.write(
-        "- Python\n"
-        "- Streamlit\n"
-        "- Expressões regulares (Regex)\n"
-        "- GitHub"
+        "• Python\n\n"
+        "• Streamlit\n\n"
+        "• Expressões Regulares (Regex)\n\n"
+        "• GitHub"
     )
 
     st.divider()
 
-    st.caption(
-        "Maratona Tech 2026"
+    st.subheader("🏆 Maratona Tech 2026")
+
+    st.write(
+        "Este projeto foi desenvolvido como parte da "
+        "participação do grupo na Maratona Tech 2026."
+    )
+
+    st.success(
+        "Educação + Tecnologia + Uso consciente de IA"
     )

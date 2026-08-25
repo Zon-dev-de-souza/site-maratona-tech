@@ -406,18 +406,7 @@ elif pagina == "👥 Sobre o projeto":
         "Projeto desenvolvido pelo nosso grupo para a "
         "Maratona Tech 2026."
     )
-
-    st.write(
-        "Integrantes:"
-    )
-
-    st.write(
-        "- Integrante 1\n"
-        "- Integrante 2\n"
-        "- Integrante 3\n"
-        "- Integrante 4"
-    )
-
+    
     st.divider()
 
     st.info(
@@ -451,7 +440,7 @@ elif pagina == "📩 Suporte":
     )
 
     st.code(
-        "SEU_EMAIL_AQUI"
+        "suporte.projetomaratona@gmail.com"
     )
 
     st.write(

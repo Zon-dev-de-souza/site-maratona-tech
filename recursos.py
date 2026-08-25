@@ -3,97 +3,58 @@ RECURSOS = {
     "💻 Programação": [
 
         {
-            "titulo": "Curso de Python — Curso em Vídeo",
+            "titulo": "Python — Curso em Vídeo",
             "descricao": (
-                "Curso gratuito de Python para quem está começando "
-                "a aprender programação."
+                "Curso gratuito para aprender Python desde os conceitos "
+                "iniciais até conteúdos mais avançados."
             ),
             "url": "https://www.youtube.com/@CursoemVideo"
         },
 
         {
-            "titulo": "Documentação oficial do Python",
+            "titulo": "Free Programming Books",
             "descricao": (
-                "Documentação oficial da linguagem Python para "
-                "consultar conceitos, funções e recursos."
-            ),
-            "url": "https://docs.python.org/3/"
-        },
-
-        {
-            "titulo": "E-books gratuitos de programação",
-            "descricao": (
-                "Biblioteca digital com livros e materiais gratuitos "
-                "sobre programação e tecnologia."
+                "Coleção gratuita de livros e materiais sobre programação "
+                "e desenvolvimento de software."
             ),
             "url": "https://github.com/EbookFoundation/free-programming-books"
-        }
-    ],
-
-
-    "📖 Português": [
-
-        {
-            "titulo": "Português — Brasil Escola",
-            "descricao": (
-                "Conteúdos gratuitos sobre gramática, literatura, "
-                "redação e língua portuguesa."
-            ),
-            "url": "https://brasilescola.uol.com.br/portugues/"
         },
 
         {
-            "titulo": "Literatura — Brasil Escola",
+            "titulo": "MDN Web Docs",
             "descricao": (
-                "Materiais gratuitos para estudar literatura brasileira "
-                "e seus principais períodos."
+                "Documentação e materiais para aprender HTML, CSS, "
+                "JavaScript e desenvolvimento web."
             ),
-            "url": "https://brasilescola.uol.com.br/literatura/"
-        }
-    ],
-
-
-    "🗽 Inglês": [
-
-        {
-            "titulo": "BBC Learning English",
-            "descricao": (
-                "Materiais gratuitos para desenvolver vocabulário, "
-                "gramática, pronúncia e compreensão em inglês."
-            ),
-            "url": "https://www.bbc.co.uk/learningenglish"
+            "url": "https://developer.mozilla.org/pt-BR/"
         },
 
         {
-            "titulo": "British Council — LearnEnglish",
+            "titulo": "HTML e CSS — Curso em Vídeo",
             "descricao": (
-                "Exercícios e materiais gratuitos para aprender inglês."
+                "Curso gratuito para aprender os fundamentos de HTML5 "
+                "e CSS3 e começar a desenvolver páginas web."
             ),
-            "url": "https://learnenglish.britishcouncil.org/"
-        }
-    ],
-
-
-    "📐 Matemática básica para vestibular": [
-
-        {
-            "titulo": "Matemática para vestibular — YouTube",
-            "descricao": (
-                "Playlist e aulas gratuitas para revisar matemática "
-                "básica e conteúdos importantes para vestibulares."
-            ),
-            "url": (
-                "https://www.youtube.com/watch?v=e78_5WIssSU&list=PLTPg64KdGgYhYpS5nXdFgdqEZDOS5lARB"
-            )
+            "url": "https://www.youtube.com/@CursoemVideo"
         },
 
         {
-            "titulo": "Khan Academy — Matemática",
+            "titulo": "JavaScript — MDN",
             "descricao": (
-                "Exercícios e aulas gratuitas de matemática, "
-                "do nível básico ao avançado."
+                "Guia e documentação gratuita para aprender JavaScript "
+                "e utilizar a linguagem no desenvolvimento web."
             ),
-            "url": "https://pt.khanacademy.org/math"
+            "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"
+        },
+
+        {
+            "titulo": "W3Schools",
+            "descricao": (
+                "Tutoriais gratuitos e exemplos práticos de HTML, CSS, "
+                "JavaScript e outras tecnologias web."
+            ),
+            "url": "https://www.w3schools.com/"
         }
+
     ]
 }

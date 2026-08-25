@@ -10,7 +10,7 @@ from protetor import proteger_prompt, gerar_prompt_minimizado
 # ============================================================
 
 st.set_page_config(
-    page_title="Projeto Maratona Tech",
+    page_title="Project Midnight",
     page_icon="📚",
     layout="wide"
 )
@@ -20,7 +20,7 @@ st.set_page_config(
 # MENU LATERAL
 # ============================================================
 
-st.sidebar.title("Projeto Maratona Tech")
+st.sidebar.title("Project Midnight")
 
 st.sidebar.caption("Maratona Tech 2026")
 
@@ -51,7 +51,7 @@ st.sidebar.caption(
 
 if pagina == "🏠 Início":
 
-    st.title("Projeto Maratona Tech")
+    st.title("Project Midnight")
 
     st.subheader(
         "Recursos educacionais gratuitos para estudantes"
@@ -351,7 +351,7 @@ elif pagina == "👥 Sobre o projeto":
 
     st.title("Sobre o projeto")
 
-    st.subheader("Projeto Maratona Tech")
+    st.subheader("Project Midnight")
 
     st.write(
         "O Projeto Maratona Tech é uma iniciativa desenvolvida "

@@ -119,7 +119,7 @@ if pagina == "🏠 Início":
 
         st.write(
             "Conteúdos gratuitos para Português, Inglês "
-            "e Matemática."
+            ", Matemática e outras materias."
         )
 
     with col3:

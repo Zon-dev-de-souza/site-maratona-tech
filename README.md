@@ -14,6 +14,7 @@ para estudantes e apresenta uma ferramenta de proteção de prompts.
 - Materiais de Português
 - Materiais de Inglês
 - Matemática básica para vestibular
+- E mais outros diversos materiais e conteúdo de outas materias
 - Detector de informações pessoais
 - Proteção de prompts
 - Minimização de dados pessoais

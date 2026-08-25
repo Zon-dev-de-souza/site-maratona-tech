@@ -1,10 +1,10 @@
-# []
+# Project Midnight
 
 Projeto desenvolvido para a Maratona Tech 2026.
 
 ## Sobre
 
-O [] é uma plataforma que reúne recursos educacionais gratuitos
+O Project Midnight é uma plataforma que reúne recursos educacionais gratuitos
 para estudantes e apresenta uma ferramenta de proteção de prompts.
 
 ## Funcionalidades
